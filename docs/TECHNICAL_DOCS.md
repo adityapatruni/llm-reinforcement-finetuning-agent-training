@@ -276,34 +276,9 @@ python src/ppo_rft.py \
   --batch-size 2
 ```
 
-## 6. AMD Radeon RX 9070 RT Guidance
-PyTorch on AMD GPUs uses ROCm. Practical guidance:
-- Use a **ROCm-enabled PyTorch build** compatible with your ROCm version.
-- If the GPU is not supported by ROCm, fall back to CPU or use cloud GPUs.
-- If you hit memory limits, reduce `--batch-size` and `--max-len`.
-
-## 7. GCP Free-Tier Fallback (Action List)
-If local ROCm support is not viable:
-1. Use **Colab free tier** for quick experiments.
-2. Use **GCP free-tier CPU VM** for preprocessing and small tests.
-3. Use **short paid GPU sessions** only for training runs; keep batch sizes small.
-4. Save checkpoints to Google Drive or Google Cloud Storage.
-
-## 8. Extending the Project
-- Replace accuracy with correlation or preference accuracy metrics.
-- Add a pairwise ranking loss for preference data.
-- Integrate with an RFT loop (e.g., PPO) to train an LLM policy directly.
-
-## 9. Tests
+## 6. Tests
 Basic unit tests are in `tests/`. Run:
 ```
 pytest
 RUN_SLOW=1 pytest -k train_smoke
 ```
-
-## 10. Future Feature Additions (Not Implemented)
-- **Production-grade PPO**: value head, advantage estimation (GAE), reward normalization, adaptive KL target.
-- **Rich evaluation**: preference accuracy, rank correlation, calibration metrics, dataset-by-dataset diagnostics.
-- **Dataset version pinning**: cache and pin specific dataset revisions for reproducibility.
-- **Reward model ensembles**: multiple feedback models with aggregation for stability.
-- **Safety filters**: guardrails for unsafe content in both training and inference.
