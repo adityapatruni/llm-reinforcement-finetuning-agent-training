@@ -170,7 +170,7 @@ Two models share the same interface:
 
 Both are small enough to train on a single GPU and return a vector of size `num_actions`.
 
-### 3.3 RL algorithm (REINFORCE)
+### 3.3 RL algorithm
 **File**: `src/train_feedback_agent.py`
 
 Objective:
